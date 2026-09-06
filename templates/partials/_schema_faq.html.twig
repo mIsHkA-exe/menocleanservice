@@ -1,0 +1,20 @@
+<script type="application/ld+json">
+	{
+		  "@context": "https://schema.org",
+		  "@type": "FAQPage",
+		  "mainEntity": [
+	{% for item in questions %}
+		{
+				      "@type": "Question",
+				      "name":
+		{{ item.question|json_encode|raw }},
+				      "acceptedAnswer": {
+				        "@type": "Answer",
+				        "text":
+		{{ item.reponse|json_encode|raw }}
+		}
+				    }{{ not loop.last ? ',' }}
+	{% endfor %}
+	]
+		}
+</script>

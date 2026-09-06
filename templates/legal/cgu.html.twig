@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% set headerSolid = true %}
+
+{% block title %}CGU | MENO CLEAN SERVICES
+{% endblock %}
+{% block meta_description %}CGU du site MENO CLEAN SERVICES.
+{% endblock %}
+{% block meta_robots %}noindex, follow
+{% endblock %}
+
+{% block body %}
+	<div class="legal-page">
+		<div class="container">
+			<h1>Conditions Générales d'Utilisation</h1>
+			<p class="updated">Dernière mise à jour : {{ "now"|date("d/m/Y")}}</p>
+
+			<h2>1. Objet</h2>
+			<p>
+				Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du site menocleanservices.fr, édité par MENO CLEAN SERVICES. 
+				L'utilisation du site implique l'acceptation pleine et entière des présentes CGU.
+			</p>
+
+			<h2>2. Accès au site</h2>
+			<p>
+				Le site est accessible gratuitement à tout utilisateur disposant d'un accès à internet. Tous les frais liés à cet accès (matériel, connexion internet) 
+				sont à la charge de l'utilisateur. MENO CLEAN SERVICES met en œuvre les moyens raisonnables à sa disposition pour assurer un accès continu au site, 
+				sans garantie de résultat.
+			</p>
+
+			<h2>3. Services proposés</h2>
+			<p>
+				Le site présente les prestations de nettoyage professionnel proposées par MENO CLEAN SERVICES ainsi qu'un formulaire de demande de devis et de contact. 
+				Les devis fournis via le site sont des estimations qui ne deviennent contractuelles qu'après validation écrite des deux parties.
+			</p>
+
+			<h2>4. Formulaires et exactitude des informations</h2>
+			<p>
+				L'utilisateur s'engage à fournir des informations exactes lors de l'utilisation des formulaires de devis et de contact. MENO CLEAN SERVICES ne saurait 
+				être tenue responsable des conséquences résultant d'informations erronées ou incomplètes communiquées par l'utilisateur.
+			</p>
+
+			<h2>5. Propriété intellectuelle</h2>
+			<p>
+				Le contenu du site (textes, visuels, structure, code) est protégé au titre du droit d'auteur. Toute
+				reproduction ou utilisation non autorisée est interdite, sous réserve des exceptions prévues par la loi.
+			</p>
+
+			<h2>6. Responsabilité</h2>
+			<p>
+				MENO CLEAN SERVICES ne pourra être tenue responsable des dommages directs ou indirects résultant de
+				l'utilisation du site, y compris en cas d'inaccessibilité temporaire, de bug, d'intrusion ou de virus
+				informatique, sauf faute prouvée de sa part.
+			</p>
+
+			<h2>7. Données personnelles</h2>
+			<p>
+				Le traitement des données personnelles collectées via le site est décrit dans notre
+				<a href="{{ path('app_politique_confidentialite') }}">politique de confidentialité</a>, qui fait partie intégrante des présentes CGU.
+			</p>
+
+			<h2>8. Modification des CGU</h2>
+			<p>
+				MENO CLEAN SERVICES se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs sont
+				invités à les consulter régulièrement.
+			</p>
+
+			<h2>9. Droit applicable et juridiction compétente</h2>
+			<p>
+				Les présentes CGU sont soumises au droit français. Tout litige relatif à leur interprétation ou à leur
+				exécution relève de la compétence des tribunaux français.
+			</p>
+
+		</div>
+	</div>
+{% endblock %}

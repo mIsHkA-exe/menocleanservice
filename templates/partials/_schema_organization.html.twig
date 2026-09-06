@@ -1,0 +1,39 @@
+<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "LocalBusiness",
+	  "@id": "{{ app.request.schemeAndHttpHost }}/#organisation",
+	  "name": "MENO CLEAN SERVICES",
+	  "description": "Entreprise de nettoyage professionnel intervenant auprès des copropriétés, bureaux, commerces et chantiers en Île-de-France.",
+	  "url": "{{ app.request.schemeAndHttpHost }}/",
+	  "image": "{{ app.request.schemeAndHttpHost ~ asset('images/main-logo.png') }}",
+	  "telephone": "+33612062505",
+	  "email": "contact@menocleanservices.fr",
+	  "priceRange": "€€",
+	  "address": {
+	    "@type": "PostalAddress",
+	    "streetAddress": "6 rue Jean Anouilh",
+	    "addressLocality": "Sartrouville",
+	    "postalCode": "78500",
+	    "addressCountry": "FR"
+	  },
+	  "areaServed": {
+	    "@type": "AdministrativeArea",
+	    "name": "Île-de-France"
+	  },
+	  "openingHoursSpecification": [
+	    {
+	      "@type": "OpeningHoursSpecification",
+	      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+	      "opens": "08:00",
+	      "closes": "19:00"
+	    },
+	    {
+	      "@type": "OpeningHoursSpecification",
+	      "dayOfWeek": ["Saturday"],
+	      "opens": "09:00",
+	      "closes": "13:00"
+	    }
+	  ]
+	}
+</script>

@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% set headerSolid = true %}
+
+{% block title %}Mentions légales | MENO CLEAN SERVICES
+{% endblock %}
+{% block meta_description %}Mentions légales du site MENO CLEAN SERVICES.
+{% endblock %}
+{% block meta_robots %}noindex, follow
+{% endblock %}
+
+{% block body %}
+	<div class="legal-page">
+		<div class="container">
+			<h1>Mentions légales</h1>
+			<p class="updated">Dernière mise à jour :
+				{{ 'now'|date('d/m/Y')}}</p>
+
+			<h2>1. Éditeur du site</h2>
+			<p>
+				Le présent site est édité par MENO CLEAN SERVICES, SASU au capital de 1 000€, immatriculée au Registre du Commerce et des Sociétés de Versailles 
+						sous le numéro SIRET 10624516000010, dont le siège social est situé 6 rue jean Anouilh, 78500 Sartrouville.
+			</p>
+			<ul>
+				<li>Numéro de TVA intracommunautaire :
+					<span class="legal-placeholder">[numéro TVA]</span>
+				</li>
+				<li>Téléphone :
+					<a href="tel:+33612062505">06 12 06 25 05</a>
+				</li>
+				<li>Email :
+					<a href="mailto:contact@menocleanservices.fr">contact@menocleanservices.fr</a>
+
+				</li>
+				<li>Directeur de la publication : Ngankou Franck
+				</li>
+			</ul>
+
+			<h2>2. Hébergement</h2>
+			<p>
+				Le site est hébergé par
+				<strong>OVH SAS</strong>, société par actions simplifiée
+						    au capital de 50 000 000 €, immatriculée au RCS de Lille Métropole sous le
+						    numéro 424 761 419, dont le siège social est situé au
+						    2 rue Kellermann, 59100 Roubaix, France.
+			</p>
+			<p>
+				Téléphone :
+				<a href="tel:+33972101007">1007</a>
+			</p>
+
+
+			<h2>3. Propriété intellectuelle</h2>
+			<p>
+				L'ensemble des contenus présents sur ce site (textes, images, logos, icônes, structure) est la propriété exclusive de MENO CLEAN SERVICES, 
+								sauf mention contraire. Toute reproduction, représentation, modification ou exploitation totale ou partielle de ces contenus, 
+								sans autorisation préalable écrite, est interdite et pourrait constituer une contrefaçon au sens des articles L.335-2 et suivants du Code 
+								de la propriété intellectuelle.
+			</p>
+
+			<h2>4. Responsabilité</h2>
+			<p>
+				MENO CLEAN SERVICES s'efforce de fournir sur ce site des informations aussi précises que possible. Elle ne pourra toutefois être tenue responsable des omissions,
+												inexactitudes et carences dans la mise à jour, qu'elles soient de son fait ou du fait de tiers partenaires.
+			</p>
+
+			<h2>5. Liens hypertextes</h2>
+			<p>
+				Le site peut contenir des liens hypertextes vers d'autres sites. MENO CLEAN SERVICES n'exerce aucun contrôle sur ces sites et 
+												décline toute responsabilité quant à leur contenu.
+			</p>
+
+			<h2>6. Droit applicable</h2>
+			<p>
+				Les présentes mentions légales sont soumises au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français 
+												seront seuls compétents.
+			</p>
+
+			<h2>7. Contact</h2>
+			<p>
+				Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter à l'adresse
+				<a href="mailto:contact@menocleanservices.fr">contact@menocleanservices.fr</a>
+
+				ou via notre
+				<a href="{{ path("app_home") }}#contact">formulaire de contact</a>.
+			</p>
+
+
+		</div>
+	</div>
+
+{% endblock %}

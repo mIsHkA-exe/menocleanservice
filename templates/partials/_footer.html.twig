@@ -1,0 +1,55 @@
+<footer class="site-footer">
+	<div class="container">
+		<div class="footer-grid">
+			<div class="footer-brand">
+				<a href="{{ path('app_home') }}" class="brand">
+					<span>MENO CLEAN SERVICES</span>
+				</a>
+				<p>Entreprise de nettoyage professionnel pour copropriétés, bureaux, commerces et chantiers en Île-de-France.</p>
+			</div>
+
+			<div class="footer-col">
+				<h4>Navigation</h4>
+				<ul>
+					<li><ahref="{{path('app_home')}}#accueil">Accueil</a></li>
+					<li><ahref="{{path('app_home')}}#services">Nos services</a></li>
+					<li><ahref="{{path('app_home')}}#pourquoi">Pourquoi nous</a></li>
+					<li><ahref="{{path('app_home')}}#galerie">Galerie</a></li>
+					<li><ahref="{{path('app_home')}}#avis">Avis clients</a></li>
+					<li><ahref="{{path('app_home')}}#faq">FAQ</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-col">
+				<h4>Services</h4>
+				<ul>
+					<li><ahref="{{path('app_home')}}#services">Nettoyage de copropriétés</a></li>
+					<li><ahref="{{path('app_home')}}#services">Entretien de bureaux</a></li>
+					<li><ahref="{{path('app_home')}}#services">Nettoyage après travaux</a></li>
+					<li><ahref="{{path('app_home')}}#services">Nettoyage de vitres</a></li>
+					<li><ahref="{{path('app_home')}}#services">Décapage & cristallisation</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-col">
+				<h4>Contact</h4>
+				<ul>
+					<li><a href="tel:+33612062505">06 12 06 25 05</a></li>
+					<li><a href="mailto:contact@menocleanservices.fr">contact@menocleanservices.fr</a></li>
+					<li><ahref="{{path('app_home')}}#contact">6 rue Jean Anouilh, 78500 Sartrouville</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<span>©
+				{{ 'now'|date('Y') }}
+				MENO CLEAN SERVICES. Tous droits réservés.</span>
+			<div class="footer-bottom-links">
+				<a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
+				<a href="{{ path('app_politique_confidentialite') }}">Politique de confidentialité</a>
+				<a href="{{ path('app_cgu') }}">CGU</a>
+			</div>
+		</div>
+	</div>
+</footer>

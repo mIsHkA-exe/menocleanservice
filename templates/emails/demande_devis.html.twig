@@ -1,0 +1,30 @@
+{% extends 'emails/_base.html.twig' %}
+{% import 'emails/_macros.html.twig' as ui %}
+
+{% block sous_titre %}Nouvelle demande de devis reçue
+{% endblock %}
+
+{% block lignes %}
+	{{ ui.ligne('Nom complet', demande.nom) }}
+	{{ ui.ligne('Société', demande.societe) }}
+	{{ ui.ligne('Téléphone', demande.telephone) }}
+	{{ ui.ligne('Email', demande.email) }}
+	{{ ui.ligne("Adresse d'intervention", demande.adresseIntervention) }}
+	{{ ui.ligne('Type de prestation', demande.prestationLibelle) }}
+	{{ ui.ligne('Surface approximative', demande.surface ? demande.surface ~ ' m²' : null) }}
+	{{ ui.ligne('Reçue le', demande.createdAt|date('d/m/Y à H:i')) }}
+
+	<tr>
+		<td style="padding:16px 0 4px;">
+			<span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:#9e8827;font-weight:bold;margin-bottom:8px;">Message</span>
+			<div style="background:#F6FAFB;border-radius:8px;padding:16px;font-size:14.5px;color:#0A2A3B;line-height:1.6;">
+				{{ demande.message|default('—')|nl2br }}
+			</div>
+		</td>
+	</tr>
+{% endblock %}
+
+{% block pied %}Demande n°
+	{{ demande.id }}
+	— envoyée depuis le formulaire de devis de menocleanservices.fr
+{% endblock %}

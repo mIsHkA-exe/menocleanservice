@@ -1,0 +1,22 @@
+<section class="section" id="faq">
+	<div class="container">
+		<div class="section-head center reveal">
+			<span class="eyebrow">Questions fréquentes</span>
+			<h2>Tout savoir sur nos prestations de nettoyage</h2>
+		</div>
+
+		<div class="faq-list reveal" data-controller="accordion">
+			{% for item in questions %}
+				<div class="faq-item" data-accordion-target="item">
+					<button type="button" class="faq-q" aria-expanded="false" data-action="click->accordion#toggle">
+						{{ item.question }}
+						<svg width="18" height="18" aria-hidden="true"><use href="#icon-plus"/></svg>
+					</button>
+					<div class="faq-a">
+						<div class="faq-a-inner">{{ item.reponse }}</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

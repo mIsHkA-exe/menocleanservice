@@ -1,0 +1,50 @@
+<section class="section section--alt" id="services" data-controller="filter">
+	<div class="container">
+		<div class="section-head center reveal">
+			<span class="eyebrow">Nos prestations</span>
+			<h2>Des services de nettoyage professionnel complets</h2>
+			<p>De la copropriété au chantier, découvrez l'ensemble de nos prestations 
+				de nettoyage et d'entretien, réalisées par une équipe qualifiée et équipée.</p>
+		</div>
+
+		<div class="services-filter reveal" role="group" aria-label="Filtrer les services par catégorie">
+			<button type="button" 
+			        class="chip is-active" 
+			        data-filter-target="chip" 
+			        data-action="click->filter#apply" 
+			        data-filter-value-param="tous">
+				Tous les services
+			</button>
+
+			{% for categorie in categories %}
+				<button type="button" 
+				    class="chip" 
+				    data-filter-target="chip" 
+					data-action="click->filter#apply" 
+					data-filter-value-param="{{ categorie.value }}">
+					{{ categorie.label }}
+				</button>
+			{% endfor %}
+		</div>
+
+		<div class="services-grid">
+			{% for service in services %}
+                <article class="service-card reveal" data-category="{{ service.categorie.value }}" data-filter-target="item">
+					{% if service.icone %}
+						<span class="service-icn">
+							<svg width="26" height="26" aria-hidden="true"><use href="#{{ service.icone }}"/></svg>
+						</span>
+					{% endif %}
+					<h3>{{ service.nom }}</h3>
+					<p>{{ service.description }}</p>
+					<a href="#devis" class="link-arrow">
+						Demander un devis
+						<svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow"/></svg>
+					</a>
+				</article>
+			{% else %}
+				<p>Aucun service n'est disponible pour le moment.</p>
+			{% endfor %}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,105 @@
+<section class="section" id="devis">
+	<div class="container">
+		<div class="section-head center reveal">
+			<span class="eyebrow">Devis gratuit</span>
+			<h2>Recevez votre devis de nettoyage sous 24h</h2>
+			<p>Remplissez ce formulaire, un conseiller MENO CLEAN SERVICES vous recontacte rapidement avec une proposition adaptée à vos besoins.</p>
+		</div>
+
+		<div class="quote-wrap reveal">
+			<div class="quote-side">
+				<h3>Un devis simple, rapide et sans engagement</h3>
+				<p>Toutes nos estimations sont gratuites et personnalisées selon la surface, la fréquence et le type de prestation souhaitée.</p>
+				<div class="quote-points">
+					<div class="quote-point">
+						<svg width="18" height="18" aria-hidden="true"><use href="#icon-check"/></svg>Réponse sous 24h ouvrées</div>
+					<div class="quote-point">
+						<svg width="18" height="18" aria-hidden="true"><use href="#icon-check"/></svg>Visite sur site si nécessaire</div>
+					<div class="quote-point">
+						<svg width="18" height="18" aria-hidden="true"><use href="#icon-check"/></svg>Tarifs transparents, sans surprise</div>
+					<div class="quote-point">
+						<svg width="18" height="18" aria-hidden="true"><use href="#icon-check"/></svg>Sans engagement de votre part</div>
+				</div>
+			</div>
+
+			{{ form_start(devisForm, { attr: { class: 'quote-form' } }) }}
+
+			{% for message in app.flashes('devis_success') %}
+				<div class="form-status is-success" role="status">{{ message }}</div>
+			{% endfor %}
+
+			{% if devisForm.vars.submitted and not devisForm.vars.valid %}
+				<div class="form-status is-error" role="alert">Merci de corriger les champs indiqués avant l'envoi.</div>
+			{% endif %}
+
+			{{ form_errors(devisForm) }}
+
+			<div class="form-grid">
+				<div class="field{{ devisForm.nom.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.nom) }}
+					{{ form_widget(devisForm.nom) }}
+					{{ form_errors(devisForm.nom) }}
+				</div>
+
+				<div class="field{{ devisForm.societe.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.societe) }}
+					{{ form_widget(devisForm.societe) }}
+					{{ form_errors(devisForm.societe) }}
+				</div>
+
+				<div class="field{{ devisForm.telephone.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.telephone) }}
+					{{ form_widget(devisForm.telephone) }}
+					{{ form_errors(devisForm.telephone) }}
+				</div>
+
+				<div class="field{{ devisForm.email.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.email) }}
+					{{ form_widget(devisForm.email) }}
+					{{ form_errors(devisForm.email) }}
+				</div>
+
+				<div class="field full{{ devisForm.adresseIntervention.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.adresseIntervention) }}
+					{{ form_widget(devisForm.adresseIntervention) }}
+					{{ form_errors(devisForm.adresseIntervention) }}
+				</div>
+
+				<div class="field{{ devisForm.service.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.service) }}
+					{{ form_widget(devisForm.service) }}
+					{{ form_errors(devisForm.service) }}
+				</div>
+
+				<div class="field{{ devisForm.surface.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.surface) }}
+					{{ form_widget(devisForm.surface) }}
+					{{ form_help(devisForm.surface) }}
+					{{ form_errors(devisForm.surface) }}
+				</div>
+
+				<div class="field full{{ devisForm.message.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(devisForm.message) }}
+					{{ form_widget(devisForm.message) }}
+					{{ form_errors(devisForm.message) }}
+				</div>
+			</div>
+
+			<div class="form-consent{{ devisForm.consentement.vars.valid ? '' : ' has-error' }}">
+				{{ form_widget(devisForm.consentement) }}
+				<span>
+					{{ form_label(devisForm.consentement) }}
+					Voir notre
+					<a href="{{ path('app_politique_confidentialite') }}">politique de confidentialité</a>.
+					{{ form_errors(devisForm.consentement) }}
+				</span>
+			</div>
+
+			<button type="submit" class="btn btn--green btn--block">
+				<span>Recevoir mon devis gratuit</span>
+			</button>
+
+			{{ form_end(devisForm) }}
+		</div>
+	</div>
+</section>

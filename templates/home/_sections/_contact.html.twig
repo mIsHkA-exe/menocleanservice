@@ -1,0 +1,122 @@
+<section class="section section--alt" id="contact">
+	<div class="container">
+		<div class="section-head center reveal">
+			<span class="eyebrow">Contact</span>
+			<h2>Discutons de votre projet</h2>
+			<p>Une question, une urgence, un projet à chiffrer ? Notre équipe vous répond rapidement.</p>
+		</div>
+
+		<div
+			class="contact-grid reveal">
+
+			{# ---------- Colonne gauche : coordonnées et carte ---------- #}
+			<div>
+				<div class="contact-info-card">
+					<div class="contact-row">
+						<span class="icn">
+							<svg width="20" height="20" aria-hidden="true"><use href="#icon-pin"/></svg>
+						</span>
+						<div>
+							<h4>Adresse</h4>
+							<p>6 rue Jean Anouilh, 78500 Sartrouville</p>
+						</div>
+					</div>
+
+					<div class="contact-row">
+						<span class="icn">
+							<svg width="20" height="20" aria-hidden="true"><use href="#icon-phone"/></svg>
+						</span>
+						<div>
+							<h4>Téléphone</h4>
+							<p>
+								<a href="tel:+33612062505">06 12 06 25 05</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="contact-row">
+						<span class="icn">
+							<svg width="20" height="20" aria-hidden="true"><use href="#icon-mail"/></svg>
+						</span>
+						<div>
+							<h4>Email</h4>
+							<p>
+								<a href="mailto:contact@menocleanservices.fr">contact@menocleanservices.fr</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="contact-row">
+						<span class="icn">
+							<svg width="20" height="20" aria-hidden="true"><use href="#icon-clock"/></svg>
+						</span>
+						<div>
+							<h4>Horaires</h4>
+							<p>Lun–Ven : 8h–19h · Sam : 9h–13h · Urgences 7j/7</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="map-frame">
+					<iframe src="https://www.google.com/maps?q=6+rue+Jean+Anouilh,+78500+Sartrouville&output=embed" title="Localisation de MENO CLEAN SERVICES à Sartrouville" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+				</div>
+			</div>
+
+			{# ---------- Colonne droite : formulaire ---------- #}
+			{{ form_start(contactForm, { attr: { class: 'quote-form contact-form' } }) }}
+			<div class="contact-form-card">
+				<h3>Envoyer un message</h3>
+
+				{% for message in app.flashes('contact_success') %}
+					<div class="form-status is-success" role="status">{{ message }}</div>
+				{% endfor %}
+
+				{% if contactForm.vars.submitted and not contactForm.vars.valid %}
+					<div class="form-status is-error" role="alert">Merci de corriger les champs indiqués avant l'envoi.</div>
+				{% endif %}
+
+				{{ form_errors(contactForm) }}
+
+				<div class="field{{ contactForm.nom.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(contactForm.nom) }}
+					{{ form_widget(contactForm.nom) }}
+					{{ form_errors(contactForm.nom) }}
+				</div>
+
+				<div class="field{{ contactForm.email.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(contactForm.email) }}
+					{{ form_widget(contactForm.email) }}
+					{{ form_errors(contactForm.email) }}
+				</div>
+
+				<div class="field{{ contactForm.telephone.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(contactForm.telephone) }}
+					{{ form_widget(contactForm.telephone) }}
+					{{ form_errors(contactForm.telephone) }}
+				</div>
+
+				<div class="field{{ contactForm.message.vars.valid ? '' : ' has-error' }}">
+					{{ form_label(contactForm.message) }}
+					{{ form_widget(contactForm.message) }}
+					{{ form_errors(contactForm.message) }}
+				</div>
+
+				<div class="form-consent{{ contactForm.consentement.vars.valid ? '' : ' has-error' }}">
+					{{ form_widget(contactForm.consentement) }}
+					<span>
+						{{ form_label(contactForm.consentement) }}
+						Voir notre
+						<a href="{{ path('app_politique_confidentialite') }}">politique de confidentialité</a>.
+						{{ form_errors(contactForm.consentement) }}
+					</span>
+				</div>
+
+				<button type="submit" class="btn btn--block">
+					<span>Envoyer le message</span>
+				</button>
+			</div>
+			{{ form_end(contactForm) }}
+
+		</div>
+	</div>
+</section>

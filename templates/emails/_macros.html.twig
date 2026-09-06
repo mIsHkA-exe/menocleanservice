@@ -1,0 +1,8 @@
+{% macro ligne(libelle, valeur) %}
+	<tr>
+		<td style="padding:12px 0;border-bottom:1px solid #D8E5E9;">
+			<span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:#9e8827;font-weight:bold;">{{ libelle }}</span>
+			<span style="display:block;font-size:15px;color:#0A2A3B;margin-top:4px;">{{ valeur|default('—') }}</span>
+		</td>
+	</tr>
+{% endmacro %}

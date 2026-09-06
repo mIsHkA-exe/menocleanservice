@@ -1,0 +1,60 @@
+<header class="site-header{% if headerSolid %} is-scrolled{% endif %}" data-controller="{% if not headerSolid %}header {% endif %}mobile-nav">
+	<div class="container">
+		<a href="{{ path('app_home') }}" class="brand" aria-label="MENO CLEAN SERVICES — retour à l'accueil">
+			<div class="logo-wrapper">
+				<img src="{{ asset('images/main-logo.png') }}" alt="" class="logo" width="130" height="82">
+			</div>
+			<span class="brand-name">MENO
+				<b>CLEAN</b>
+				SERVICES</span>
+		</a>
+
+		<nav class="nav-desktop" aria-label="Navigation principale">
+			<a href="{{ path('app_home') }}#accueil">Accueil</a>
+			<a href="{{ path('app_home') }}#services">Nos services</a>
+			<a href="{{ path('app_home') }}#pourquoi">Pourquoi nous</a>
+			<a href="{{ path('app_home') }}#galerie">Galerie</a>
+			<a href="{{ path('app_home') }}#avis">Avis clients</a>
+			<a href="{{ path('app_home') }}#contact">Contact</a>
+		</nav>
+
+		<div class="header-actions">
+			<a class="header-phone" href="tel:+33612062505">
+				<svg width="16" height="16" aria-hidden="true"><use href="#icon-phone"/></svg>
+				06 12 06 25 05
+			</a>
+			<a href="{{ path('app_home') }}#devis" class="btn btn--sm">
+				<span>Devis gratuit</span>
+			</a>
+			<button class="nav-toggle" 
+			        aria-expanded="false" 
+					aria-controls="nav-mobile" 
+					aria-label="Ouvrir le menu" 
+					data-mobile-nav-target="toggle" 
+					data-action="click->mobile-nav#toggle">
+				<span></span>
+			</button>
+		</div>
+	</div>
+
+	<nav id="nav-mobile" 
+	     class="nav-mobile" 
+		 aria-label="Navigation mobile" 
+		 data-mobile-nav-target="panel"
+         data-action="click->mobile-nav#close">
+		<a href="{{ path('app_home') }}#accueil">Accueil</a>
+		<a href="{{ path('app_home') }}#services">Nos services</a>
+		<a href="{{ path('app_home') }}#pourquoi">Pourquoi nous</a>
+		<a href="{{ path('app_home') }}#galerie">Galerie</a>
+		<a href="{{ path('app_home') }}#avis">Avis clients</a>
+		<a href="{{ path('app_home') }}#faq">FAQ
+			<svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg>
+		</a>
+		<a href="{{ path('app_home') }}#contact">Contact
+			<svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg>
+		</a>
+		<a href="{{ path('app_home') }}#devis" class="btn btn--block">
+			<span>Demander un devis gratuit</span>
+		</a>
+	</nav>
+</header>
