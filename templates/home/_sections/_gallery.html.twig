@@ -25,94 +25,60 @@
 
 		<div class="gallery-grid reveal">
 
-			<div class="gallery-item compare" data-category="bureaux" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
-							                  pointermove->compare#move
-							                  pointerup->compare#stop
-							                  pointerleave->compare#stop
-							                  pointercancel->compare#stop
-							                  keydown->compare#keyboard">
+			<div class="gallery-item compare" data-category="sols" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
+												                  pointermove->compare#move
+												                  pointerup->compare#stop
+												                  pointerleave->compare#stop
+												                  pointercancel->compare#stop
+												                  keydown->compare#keyboard">
+
 				<div class="compare-pane compare-pane--before">
-					<svg viewbox="0 0 400 300" preserveaspectratio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bureau avant nettoyage">
-						<rect width="400" height="300" fill="#93A6AD"/>
-						<circle cx="70" cy="70" r="14" fill="#5B6E76" opacity=".3"/>
-						<circle cx="300" cy="90" r="20" fill="#5B6E76" opacity=".25"/>
-						<circle cx="150" cy="220" r="16" fill="#5B6E76" opacity=".3"/>
-						<rect x="-20" y="150" width="450" height="6" fill="#5B6E76" opacity=".2" transform="rotate(-8 200 150)"/>
-						<circle cx="200" cy="150" r="34" fill="rgba(10,42,59,.32)"/>
-						<use href="#icon-briefcase" x="188" y="138" width="24" height="24" stroke="#fff" opacity=".9"/>
-					</svg>
+					<img src="{{ asset('images/dirty-office.png') }}" alt="Surface-encrassée-avant-intervention">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<svg viewbox="0 0 400 300" preserveaspectratio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bureau après nettoyage">
-						<defs>
-							<linearGradient id="freshBureaux" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1668B0"/><stop offset="1" stop-color="#279E76"/></linearGradient>
-						</defs>
-						<rect width="400" height="300" fill="url(#freshBureaux)"/>
-						<rect x="-40" y="0" width="50" height="450" fill="#fff" opacity=".1" transform="rotate(22 200 150)"/>
-						<g fill="#fff" opacity=".8">
-							<use href="#icon-sparkle" x="60" y="60" width="18" height="18"/>
-							<use href="#icon-sparkle" x="310" y="200" width="16" height="16"/>
-						</g>
-						<circle cx="200" cy="150" r="34" fill="#fff"/>
-						<use href="#icon-briefcase" x="188" y="138" width="24" height="24" stroke="#1668B0"/>
-					</svg>
+					<img src="{{ asset('images/cleaned-office.png') }}" alt="Surface-nettoyée-après-intervention">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">
-					<svg width="16" height="16"><use href="#icon-arrow"/></svg>
+					<svg width="20" height="20"><use href="#icon-arrow"/></svg>
 				</div>
-				<span class="gallery-caption">Entretien de bureaux</span>
-			</div>
-
-			<div class="gallery-item compare" data-category="coproprietes" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
-							                  pointermove->compare#move
-							                  pointerup->compare#stop
-							                  pointerleave->compare#stop
-							                  pointercancel->compare#stop
-							                  keydown->compare#keyboard">
-
-				<div class="compare-pane compare-pane--before">
-					<svg viewbox="0 0 400 300" preserveaspectratio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hall de copropriété avant nettoyage">
-						<rect width="400" height="300" fill="#8FA2AA"/>
-						<circle cx="90" cy="90" r="18" fill="#5B6E76" opacity=".28"/>
-						<circle cx="320" cy="60" r="12" fill="#5B6E76" opacity=".3"/>
-						<circle cx="260" cy="230" r="22" fill="#5B6E76" opacity=".22"/>
-						<rect x="-20" y="200" width="450" height="7" fill="#5B6E76" opacity=".18" transform="rotate(7 200 200)"/>
-						<circle cx="200" cy="150" r="34" fill="rgba(10,42,59,.32)"/>
-						<use href="#icon-building" x="188" y="138" width="24" height="24" stroke="#fff" opacity=".9"/>
-					</svg>
-				</div>
-				<div class="compare-pane compare-pane--after">
-					<svg viewbox="0 0 400 300" preserveaspectratio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hall de copropriété après nettoyage">
-						<defs>
-							<linearGradient id="freshCopro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1668B0"/><stop offset="1" stop-color="#279E76"/></linearGradient>
-						</defs>
-						<rect width="400" height="300" fill="url(#freshCopro)"/>
-						<rect x="-40" y="0" width="50" height="450" fill="#fff" opacity=".1" transform="rotate(22 200 150)"/>
-						<g fill="#fff" opacity=".8">
-							<use href="#icon-sparkle" x="80" y="70" width="18" height="18"/>
-							<use href="#icon-sparkle" x="300" y="210" width="20" height="20"/>
-						</g>
-						<circle cx="200" cy="150" r="34" fill="#fff"/>
-						<use href="#icon-building" x="188" y="138" width="24" height="24" stroke="#1668B0"/>
-					</svg>
-				</div>
-				<div class="compare-divider"></div>
-				<div class="compare-handle">
-					<svg width="16" height="16"><use href="#icon-arrow"/></svg>
-				</div>
-				<span class="gallery-caption">Hall de copropriété</span>
+				<span class="compare-tag compare-tag--before">Avant</span>
+				<span class="compare-tag compare-tag--after">Après</span>
+				<span class="gallery-caption">Entretiens des bureaux</span>
 			</div>
 
 			<div class="gallery-item compare" data-category="vitres" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
-							                  pointermove->compare#move
-							                  pointerup->compare#stop
-							                  pointerleave->compare#stop
-							                  pointercancel->compare#stop
-							                  keydown->compare#keyboard">
+														                  pointermove->compare#move
+														                  pointerup->compare#stop
+														                  pointerleave->compare#stop
+														                  pointercancel->compare#stop
+														                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/cleaned-window.jpeg') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-lobby.png') }}" alt="Surface-encrassée-avant-intervention">
+				</div>
+				<div class="compare-pane compare-pane--after">
+					<img src="{{ asset('images/cleaned-lobby.png') }}" alt="Surface-nettoyée-après-intervention">
+				</div>
+				<div class="compare-divider"></div>
+				<div class="compare-handle">
+					<svg width="20" height="20"><use href="#icon-arrow"/></svg>
+				</div>
+				<span class="compare-tag compare-tag--before">Avant</span>
+				<span class="compare-tag compare-tag--after">Après</span>
+				<span class="gallery-caption">Hall de copropiétés</span>
+			</div>
+
+
+			<div class="gallery-item compare" data-category="vitres" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
+												                  pointermove->compare#move
+												                  pointerup->compare#stop
+												                  pointerleave->compare#stop
+												                  pointercancel->compare#stop
+												                  keydown->compare#keyboard">
+
+				<div class="compare-pane compare-pane--before">
+					<img src="{{ asset('images/dirty-window.png') }}" alt="Surface-encrassée-avant-intervention">
 				</div>
 				<div class="compare-pane compare-pane--after">
 					<img src="{{ asset('images/cleaned-window.jpeg') }}" alt="Surface-nettoyée-après-intervention">
@@ -127,14 +93,14 @@
 			</div>
 
 			<div class="gallery-item compare" data-category="sols" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
-							                  pointermove->compare#move
-							                  pointerup->compare#stop
-							                  pointerleave->compare#stop
-							                  pointercancel->compare#stop
-							                  keydown->compare#keyboard">
+												                  pointermove->compare#move
+												                  pointerup->compare#stop
+												                  pointerleave->compare#stop
+												                  pointercancel->compare#stop
+												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-floor.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-floor-v2.png') }}" alt="Surface-encrassée-avant-intervention">
 				</div>
 				<div class="compare-pane compare-pane--after">
 					<img src="{{ asset('images/cleaned-floor.png') }}" alt="Surface-nettoyée-après-intervention">
@@ -149,17 +115,17 @@
 			</div>
 
 			<div class="gallery-item compare" data-category="chantiers" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
-							                  pointermove->compare#move
-							                  pointerup->compare#stop
-							                  pointerleave->compare#stop
-							                  pointercancel->compare#stop
-							                  keydown->compare#keyboard">
+												                  pointermove->compare#move
+												                  pointerup->compare#stop
+												                  pointerleave->compare#stop
+												                  pointercancel->compare#stop
+												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-floor.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-site.jpg') }}" alt="Surface-encrassée-avant-intervention">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-floor.png') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-site.jpg') }}" alt="Surface-nettoyée-après-intervention">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">
@@ -171,17 +137,17 @@
 			</div>
 
 			<div class="gallery-item compare" data-category="immeubles" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
-							                  pointermove->compare#move
-							                  pointerup->compare#stop
-							                  pointerleave->compare#stop
-							                  pointercancel->compare#stop
-							                  keydown->compare#keyboard">
+												                  pointermove->compare#move
+												                  pointerup->compare#stop
+												                  pointerleave->compare#stop
+												                  pointercancel->compare#stop
+												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-floor.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-building.png') }}" alt="Surface-encrassée-avant-intervention">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-floor.png') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-building.png') }}" alt="Surface-nettoyée-après-intervention">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">

@@ -1,0 +1,13 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.inlineSuggest.edits.allowCodeShifting": "never",
+    "editor.inlineSuggest.enabled": false,
+    "editor.inlineSuggest.suppressInSnippetMode": false,
+    "editor.inlineSuggest.syntaxHighlightingEnabled": false,
+    "editor.screenReaderAnnounceInlineSuggestion": false,
+    "editor.suggest.matchOnWordStartOnly": false
+}
