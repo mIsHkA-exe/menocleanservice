@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Enum;
-use App\Enum\CategorieService;
 
 enum CategorieService: string
 {
