@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
-        #[Route('/home', name: 'app_home', methods: ['GET', 'POST'])]
+        #[Route('/', name: 'app_home', methods: ['GET', 'POST'])]
     public function index(
         Request $request,
         ServiceRepository $serviceRepository,
