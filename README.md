@@ -8,6 +8,8 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
 ![Stimulus](https://img.shields.io/badge/Stimulus-3.2-77E8B9?style=for-the-badge\&logo=stimulus\&logoColor=black)
 ![Turbo](https://img.shields.io/badge/Turbo-8.0-4B5563?style=for-the-badge)
+![OVHcloud](https://img.shields.io/badge/OVHcloud-123F6D?style=for-the-badge&logo=ovh&logoColor=white)
+![FileZilla](https://img.shields.io/badge/FileZilla-BF0000?style=for-the-badge&logo=filezilla&logoColor=white)
 
 A modern showcase website developed for **MENO CLEAN SERVICES**, a professional cleaning company operating in the Île-de-France region.
 
