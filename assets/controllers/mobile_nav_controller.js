@@ -2,6 +2,8 @@ import { Controller } from '@hotwired/stimulus';
 
 /*
  * Ouvre et ferme le menu de navigation mobile.
+ * Se referme aussi quand la fenêtre passe au format bureau (> 920 px, même
+ * point de rupture que le CSS) : sinon le défilement de la page resterait bloqué.
  */
 export default class extends Controller {
     static targets = ['toggle', 'panel'];
@@ -13,10 +15,19 @@ export default class extends Controller {
             }
         };
         window.addEventListener('keydown', this.onKeydown);
+
+        this.bureau = window.matchMedia('(min-width: 921px)');
+        this.onBreakpoint = () => {
+            if (this.bureau.matches) {
+                this.close();
+            }
+        };
+        this.bureau.addEventListener('change', this.onBreakpoint);
     }
 
     disconnect() {
         window.removeEventListener('keydown', this.onKeydown);
+        this.bureau.removeEventListener('change', this.onBreakpoint);
         this.close();
     }
 

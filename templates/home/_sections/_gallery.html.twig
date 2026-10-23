@@ -6,26 +6,24 @@
 			<p>Faites glisser le curseur sur chaque visuel pour comparer l'état des lieux avant et après notre intervention.</p>
 		</div>
 
-		<div class="gallery-filter reveal">
+		<div class="gallery-filter reveal" role="group" aria-label="Filtrer les réalisations par type d'intervention">
 			<button type="button" class="chip is-active" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="tous">Tous</button>
 
 			<button type="button" class="chip" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="bureaux">Bureaux</button>
 
-			<button type="button" class="chip" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="coproprietes">Copropriétés</button>
+			<button type="button" class="chip" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="coproprietes">Copropriétés &amp; immeubles</button>
 
 			<button type="button" class="chip" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="vitres">Vitres</button>
 
 			<button type="button" class="chip" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="sols">Sols</button>
 
 			<button type="button" class="chip" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="chantiers">Chantiers</button>
-
-			<button type="button" class="chip" data-filter-target="chip" data-action="click->filter#apply" data-filter-value-param="immeubles">Immeubles</button>
 		</div>
 
 
 		<div class="gallery-grid reveal">
 
-			<div class="gallery-item compare" data-category="sols" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
+			<div class="gallery-item compare" data-category="bureaux" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
 												                  pointermove->compare#move
 												                  pointerup->compare#stop
 												                  pointerleave->compare#stop
@@ -33,10 +31,10 @@
 												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-office.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-office.webp') }}" alt="Bureau encombré de papiers et de déchets, avant le nettoyage" width="1536" height="1024" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-office.png') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-office.webp') }}" alt="Le même bureau rangé et propre, après le nettoyage" width="1536" height="1024" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">
@@ -44,10 +42,10 @@
 				</div>
 				<span class="compare-tag compare-tag--before">Avant</span>
 				<span class="compare-tag compare-tag--after">Après</span>
-				<span class="gallery-caption">Entretiens des bureaux</span>
+				<span class="gallery-caption">Entretien de bureaux</span>
 			</div>
 
-			<div class="gallery-item compare" data-category="vitres" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
+			<div class="gallery-item compare" data-category="coproprietes" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
 														                  pointermove->compare#move
 														                  pointerup->compare#stop
 														                  pointerleave->compare#stop
@@ -55,10 +53,10 @@
 														                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-lobby.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-lobby.webp') }}" alt="Hall d'entrée de copropriété au sol sali de traces et de feuilles, avant le nettoyage" width="1200" height="900" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-lobby.png') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-lobby.webp') }}" alt="Le même hall au sol propre et brillant, après le nettoyage" width="1200" height="900" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">
@@ -66,7 +64,7 @@
 				</div>
 				<span class="compare-tag compare-tag--before">Avant</span>
 				<span class="compare-tag compare-tag--after">Après</span>
-				<span class="gallery-caption">Hall de copropiétés</span>
+				<span class="gallery-caption">Hall de copropriété</span>
 			</div>
 
 
@@ -78,10 +76,10 @@
 												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-window.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-window.webp') }}" alt="Vitre et rebord extérieurs couverts de saleté et de mousse, avant le nettoyage" width="904" height="1200" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-window.jpeg') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-window.webp') }}" alt="La même vitre transparente et son rebord propre, après le nettoyage" width="539" height="715" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">
@@ -100,10 +98,10 @@
 												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-floor-v2.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-floor-v2.webp') }}" alt="Sol carrelé terne et taché, avant le décapage" width="1200" height="900" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-floor.png') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-floor.webp') }}" alt="Le même sol décapé et lustré, après la cristallisation" width="1200" height="900" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">
@@ -122,10 +120,10 @@
 												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-site-v2.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-site-v2.webp') }}" alt="Abords d'un immeuble neuf encombrés de gravats et de matériaux, avant le nettoyage de fin de chantier" width="1200" height="654" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-site.jpg') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-site.webp') }}" alt="Les mêmes abords dégagés et propres, après le nettoyage de fin de chantier" width="1200" height="655" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">
@@ -136,7 +134,7 @@
 				<span class="gallery-caption">Fin de chantier</span>
 			</div>
 
-			<div class="gallery-item compare" data-category="immeubles" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
+			<div class="gallery-item compare" data-category="coproprietes" data-filter-target="item" data-controller="compare" data-action="pointerdown->compare#start
 												                  pointermove->compare#move
 												                  pointerup->compare#stop
 												                  pointerleave->compare#stop
@@ -144,10 +142,10 @@
 												                  keydown->compare#keyboard">
 
 				<div class="compare-pane compare-pane--before">
-					<img src="{{ asset('images/dirty-building.png') }}" alt="Surface-encrassée-avant-intervention">
+					<img src="{{ asset('images/dirty-building.webp') }}" alt="Façade d'immeuble grise et encrassée, avant le nettoyage" width="1200" height="900" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-pane compare-pane--after">
-					<img src="{{ asset('images/cleaned-building.png') }}" alt="Surface-nettoyée-après-intervention">
+					<img src="{{ asset('images/cleaned-building.webp') }}" alt="La même façade claire et propre, après le nettoyage" width="1200" height="900" loading="lazy" decoding="async">
 				</div>
 				<div class="compare-divider"></div>
 				<div class="compare-handle">

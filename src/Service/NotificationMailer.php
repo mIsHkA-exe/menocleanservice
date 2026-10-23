@@ -22,39 +22,54 @@ class NotificationMailer
 
     public function notifierDemandeDevis(DemandeDevis $demande): bool
     {
-        $email = (new TemplatedEmail())
+        return $this->envoyer('demande de devis', $demande->getId(), fn (): TemplatedEmail => (new TemplatedEmail())
             ->from(new Address($this->fromEmail, 'MENO CLEAN SERVICES'))
             ->to($this->contactEmail)
             ->replyTo(new Address($demande->getEmail(), $demande->getNom()))
             ->subject('Nouvelle demande de devis — ' . $demande->getNom())
             ->htmlTemplate('emails/demande_devis.html.twig')
-            ->context(['demande' => $demande]);
-
-        return $this->envoyer($email, 'demande de devis', $demande->getId());
+            ->context(['demande' => $demande]));
     }
 
     public function notifierMessageContact(MessageContact $message): bool
     {
-        $email = (new TemplatedEmail())
+        return $this->envoyer('message de contact', $message->getId(), fn (): TemplatedEmail => (new TemplatedEmail())
             ->from(new Address($this->fromEmail, 'MENO CLEAN SERVICES'))
             ->to($this->contactEmail)
             ->replyTo(new Address($message->getEmail(), $message->getNom()))
             ->subject('Nouveau message — ' . $message->getNom())
             ->htmlTemplate('emails/message_contact.html.twig')
-            ->context(['message' => $message]);
-
-        return $this->envoyer($email, 'message de contact', $message->getId());
+            ->context(['message' => $message]));
     }
 
-    private function envoyer(TemplatedEmail $email, string $type, ?int $id): bool
+    /**
+     * La demande est déjà enregistrée quand cette méthode est appelée (B01) :
+     * aucune erreur ne doit remonter jusqu'au visiteur sous forme de page 500,
+     * sinon il renverrait le formulaire et créerait un doublon (R09).
+     *
+     * La construction de l'e-mail est faite DANS le bloc try : une adresse
+     * acceptée par le formulaire mais refusée par le composant Mime
+     * (RfcComplianceException) est ainsi interceptée elle aussi.
+     *
+     * @param \Closure(): TemplatedEmail $construire
+     */
+    private function envoyer(string $type, ?int $id, \Closure $construire): bool
     {
         try {
-            $this->mailer->send($email);
+            $this->mailer->send($construire());
 
             return true;
         } catch (TransportExceptionInterface $exception) {
-            // L'utilisateur ne doit JAMAIS voir ce détail technique.
-            $this->logger->error("Échec de l'envoi de la notification ({$type} #{$id})", [
+            // Serveur SMTP injoignable, identifiants refusés, etc.
+            $this->logger->error("Échec de l'envoi de la notification ({$type} #{$id}) : erreur de transport.", [
+                'exception' => $exception,
+            ]);
+
+            return false;
+        } catch (\Throwable $exception) {
+            // Toute autre erreur : rendu du template, adresse refusée, Messenger…
+            // C'est un défaut à corriger, d'où le niveau "critical".
+            $this->logger->critical("Échec de l'envoi de la notification ({$type} #{$id}) : erreur inattendue.", [
                 'exception' => $exception,
             ]);
 

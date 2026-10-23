@@ -2,7 +2,14 @@ import { Controller } from '@hotwired/stimulus';
 
 /*
  * Carrousel de témoignages : flèches, pastilles, défilement automatique,
- * balayage tactile, et pause au survol.
+ * balayage tactile.
+ *
+ * Défilement automatique (C12) :
+ *   - jamais si le visiteur a demandé moins d'animations (prefers-reduced-motion),
+ *     y compris si ce réglage change pendant la visite ;
+ *   - en pause tant que la souris survole le carrousel ;
+ *   - en pause tant que le focus clavier est dans le carrousel (flèches, pastilles).
+ * Les flèches, les pastilles et le balayage restent toujours utilisables.
  */
 export default class extends Controller {
     static targets = ['slides', 'slide', 'dot'];
@@ -13,12 +20,20 @@ export default class extends Controller {
 
     connect() {
         this.startX = null;
+        this.survol = false;
+        this.focus = false;
+
+        this.mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)');
+        this.onMotionChange = () => this.planifier();
+        this.mouvementReduit.addEventListener('change', this.onMotionChange);
+
         this.render();
-        this.start();
+        this.planifier();
     }
 
     disconnect() {
-        this.stop();
+        this.arreter();
+        this.mouvementReduit.removeEventListener('change', this.onMotionChange);
     }
 
     indexValueChanged() {
@@ -45,7 +60,9 @@ export default class extends Controller {
         }
 
         this.indexValue = ((index % total) + total) % total;
-        this.start();
+
+        // Repart pour un intervalle complet après une action du visiteur.
+        this.planifier();
     }
 
     render() {
@@ -62,17 +79,55 @@ export default class extends Controller {
         });
     }
 
-    start() {
-        this.stop();
-        this.timer = window.setInterval(() => this.aller(this.indexValue + 1), this.intervalValue);
+    // --- Pause : actions branchées dans _testimonials.html.twig ---
+
+    survolDebut() {
+        this.survol = true;
+        this.planifier();
     }
 
-    stop() {
+    survolFin() {
+        this.survol = false;
+        this.planifier();
+    }
+
+    focusEntre() {
+        this.focus = true;
+        this.planifier();
+    }
+
+    focusSort(event) {
+        // Le focus passe d'un bouton du carrousel à un autre : on reste en pause.
+        if (this.element.contains(event.relatedTarget)) {
+            return;
+        }
+
+        this.focus = false;
+        this.planifier();
+    }
+
+    // --- Minuterie ---
+
+    get defilementAutorise() {
+        return !this.mouvementReduit.matches && !this.survol && !this.focus;
+    }
+
+    planifier() {
+        this.arreter();
+
+        if (this.defilementAutorise) {
+            this.timer = window.setInterval(() => this.aller(this.indexValue + 1), this.intervalValue);
+        }
+    }
+
+    arreter() {
         if (this.timer) {
             window.clearInterval(this.timer);
             this.timer = null;
         }
     }
+
+    // --- Balayage tactile ---
 
     touchStart(event) {
         this.startX = event.touches[0].clientX;

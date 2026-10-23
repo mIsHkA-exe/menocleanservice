@@ -41,6 +41,7 @@ class DemandeDevis
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Merci d\'indiquer l\'adresse d\'intervention.')]
+    #[Assert\Length(max: 255, maxMessage: 'L\'adresse ne doit pas dépasser {{ limit }} caractères.')]
     private ?string $adresseIntervention = null;
 
     /**

@@ -5,7 +5,8 @@
 			<h2>L'avis de nos clients</h2>
 		</div>
 
-		<div class="testimonials reveal" data-controller="carousel" data-action="mouseenter->carousel#stop mouseleave->carousel#start">
+		<div class="testimonials reveal" data-controller="carousel"
+		     data-action="mouseenter->carousel#survolDebut mouseleave->carousel#survolFin focusin->carousel#focusEntre focusout->carousel#focusSort">
 
 			<div class="t-track">
 				<div class="t-slides" data-carousel-target="slides" data-action="touchstart->carousel#touchStart touchend->carousel#touchEnd">
@@ -79,7 +80,7 @@
 				</div>
 
 				<button type="button" class="t-arrow t-arrow--next" aria-label="Témoignage suivant" data-action="click->carousel#next">
-					<svg width="16" height="16" class="icon-flip-y" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"/></svg>
+					<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"/></svg>
 				</button>
 			</div>
 		</div>

@@ -24,6 +24,7 @@ class MessageContact
     #[ORM\Column(length: 180)]
     #[Assert\NotBlank(message: 'Merci d\'indiquer une adresse email.')]
     #[Assert\Email(message: 'Cette adresse email n\'est pas valide.')]
+    #[Assert\Length(max: 180, maxMessage: 'L\'adresse email ne doit pas dépasser {{ limit }} caractères.')]
     private ?string $email = null;
 
     #[ORM\Column(length: 30, nullable: true)]
