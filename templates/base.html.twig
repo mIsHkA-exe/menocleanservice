@@ -15,31 +15,26 @@
 		<meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}">
 		<link rel="canonical" href="{% block canonical %}{{ app.request.schemeAndHttpHost ~ app.request.pathInfo }}{% endblock %}">
 
-		<link
-		rel="icon" href="{{ asset('images/main-logo.png') }}">
+		{# Icônes : emblème du logo recadré (R01) #}
+		<link rel="icon" type="image/png" sizes="48x48" href="{{ asset('images/favicon-48.png') }}">
+		<link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
 
-		{# Polices de la charte graphique #}
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-		href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+		{# Polices de la charte graphique : hébergées localement (F03), déclarées dans app.css.
+		   Préchargement des deux polices visibles dès l'ouverture ; crossorigin est obligatoire pour une police. #}
+		<link rel="preload" href="{{ asset('fonts/bricolage-grotesque-latin-opsz-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="{{ asset('fonts/inter-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
 		{# Aperçu lors d'un partage (Facebook, LinkedIn, WhatsApp) #}
 		<meta property="og:type" content="website">
 		<meta property="og:site_name" content="MENO CLEAN SERVICES">
 		<meta property="og:locale" content="fr_FR">
-		<meta property="og:title">
-		content="
-		{% block og_title %}
-			{{ block('title') }}
-		{% endblock %}"
-		<meta property="og:description">
-		content="
-		{% block og_description %}
-			{{ block('meta_description') }}
-		{% endblock %}"
+		{# Un seul élément par balise : l'attribut content reste DANS la balise (C07).
+		   trim retire les retours à la ligne laissés par les blocs title et meta_description. #}
+		<meta property="og:title" content="{% block og_title %}{{ block('title')|trim }}{% endblock %}">
+		<meta property="og:description" content="{% block og_description %}{{ block('meta_description')|trim }}{% endblock %}">
 		<meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.pathInfo }}">
-		<meta
-		property="og:image" content="{{ app.request.schemeAndHttpHost ~ asset('images/main-logo.png') }}">
+		<meta property="og:image" content="{{ app.request.schemeAndHttpHost ~ asset('images/main-logo.jpg') }}">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="800">
 
 		{# Twitter / X #}
 		<meta name="twitter:card" content="summary_large_image">
@@ -56,7 +51,8 @@
 
 		{{ include('partials/_schema_organization.html.twig') }}
 	</head>
-	<body>
+	{# section-link : liens internes à la page sans rechargement (en-tête, pied, boutons) #}
+	<body data-controller="section-link" data-action="click->section-link#suivre">
 		{% block overlay %}{% endblock %}
 		<a class="skip-link" href="#contenu">Aller au contenu principal</a>
 

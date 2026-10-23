@@ -4,6 +4,38 @@
    Police display : Bricolage Grotesque — Police texte : Inter — Mono : JetBrains Mono
    ========================================================================== */
 
+/* ---------- 0. POLICES (hébergées localement, F03) ----------
+   Fichiers variables, sous-ensemble « latin » (couvre le français : é, à, ç, œ, €, « »).
+   Source : paquets npm @fontsource-variable/* 5.3.0 — licence SIL OFL 1.1 (assets/fonts/OFL-*.txt).
+   Les noms de familles restent ceux de --font-display / --font-body / --font-mono.
+   Préchargement de Bricolage Grotesque et Inter : templates/base.html.twig. */
+@font-face {
+    font-family: "Bricolage Grotesque";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 200 800;
+    src: url("../fonts/bricolage-grotesque-latin-opsz-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+    src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 800;
+    src: url("../fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ---------- 1. TOKENS ---------- */
 :root {
     /* Couleurs de marque */
@@ -416,17 +448,32 @@ h4 {
     z-index: 500;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+
+/* Fond flouté porté par un pseudo-élément, et non par le header lui-même :
+   un backdrop-filter sur le header ferait de lui le repère des éléments
+   position: fixed qu'il contient, et le menu mobile (.nav-mobile) serait
+   alors limité à la hauteur du header au lieu de l'écran. */
+.site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: rgba(246, 250, 251, 0.7);
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border-bottom: 1px solid transparent;
-    transition: background .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+    transition: background .3s var(--ease);
 }
 
 .site-header.is-scrolled {
-    background: white;
     border-bottom-color: var(--line);
     box-shadow: var(--shadow-sm);
+}
+
+.site-header.is-scrolled::before {
+    background: white;
 }
 
 .site-header .container {
@@ -514,6 +561,7 @@ h4 {
 
 .nav-toggle {
     display: none;
+    flex-shrink: 0;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -581,12 +629,24 @@ h4 {
     /* starts off-screen to the right */
     opacity: 1;
     /* remove fade, rely purely on slide */
-    transition: transform 0.35s var(--ease);
+    /* Fermé : caché aussi au clavier et aux lecteurs d'écran (visibility),
+       après la fin de la glissière */
+    visibility: hidden;
+    transition: transform 0.35s var(--ease), visibility 0s linear 0.35s;
     border-bottom-left-radius: 20px;
 }
 
 .nav-mobile.is-open {
     transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.35s var(--ease), visibility 0s;
+}
+
+/* Au-delà du point de rupture du menu burger, le menu mobile n'existe pas */
+@media (min-width: 921px) {
+    .nav-mobile {
+        display: none;
+    }
 }
 
 .nav-mobile a {
@@ -609,6 +669,14 @@ h4 {
 
 .nav-mobile .btn {
     margin-top: 24px;
+    /* .nav-mobile a imposait le texte bleu nuit sur le fond bleu du bouton : illisible */
+    color: var(--btn-fg);
+    justify-content: center;
+    border-bottom: none;
+}
+
+.nav-mobile .btn:hover {
+    background-color: transparent;
 }
 
 /* ---------- 5. HERO ---------- */
@@ -695,6 +763,8 @@ h4 {
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     user-select: none;
+    /* Glisser horizontal = comparateur ; glisser vertical = défilement de la page (mobile) */
+    touch-action: pan-y;
     background: var(--navy);
 }
 
@@ -1777,6 +1847,8 @@ body.has-nav-open {
     justify-content: center;
     box-shadow: var(--shadow-md);
     opacity: 0;
+    /* Masqué : ni cliquable, ni atteignable au clavier */
+    visibility: hidden;
     pointer-events: none;
     transform: translateY(10px);
     transition: all .25s var(--ease);
@@ -1785,6 +1857,7 @@ body.has-nav-open {
 
 .back-to-top.is-visible {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: none;
 }
@@ -1935,6 +2008,7 @@ body.has-nav-open {
 
 .logo-wrapper {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     width: 130px;
@@ -1956,12 +2030,22 @@ body.has-nav-open {
     height: 100%;
     object-fit: cover;
     display: block;
+    /* Pas de glisser-déposer natif de l'image (aperçu fantôme) : le geste revient au comparateur */
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
 /* Décalage du défilement pour compenser le header fixe */
 main [id],
 section[id] {
     scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+/* Section ou <main> qui reçoit le focus après un lien interne (section_link_controller) :
+   point de départ pour la touche Tab, sans contour autour de toute la section */
+main[tabindex="-1"]:focus,
+section[tabindex="-1"]:focus {
+    outline: none;
 }
 
 /* ---------- FORMULAIRES SYMFONY ---------- */
@@ -2114,5 +2198,26 @@ section[id] {
 @media (max-width: 680px) {
     .contact-form-card {
         padding: 34px 24px;
+    }
+}
+
+/* ---------- EN-TÊTE SUR PETITS ÉCRANS ---------- */
+/* Le logo, le nom et le bouton burger doivent tenir sur une ligne sans s'écraser */
+@media (max-width: 680px) {
+    .logo-wrapper {
+        width: 96px;
+        height: 60px;
+    }
+
+    .brand-name {
+        font-size: 16px;
+    }
+}
+
+/* Très petits écrans : le logo contient déjà le nom de l'entreprise ;
+   le lien garde son nom accessible (aria-label) */
+@media (max-width: 420px) {
+    .brand-name {
+        display: none;
     }
 }

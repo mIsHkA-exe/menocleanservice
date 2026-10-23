@@ -11,23 +11,34 @@
 			<div class="footer-col">
 				<h4>Navigation</h4>
 				<ul>
-					<li><ahref="{{path('app_home')}}#accueil">Accueil</a></li>
-					<li><ahref="{{path('app_home')}}#services">Nos services</a></li>
-					<li><ahref="{{path('app_home')}}#pourquoi">Pourquoi nous</a></li>
-					<li><ahref="{{path('app_home')}}#galerie">Galerie</a></li>
-					<li><ahref="{{path('app_home')}}#avis">Avis clients</a></li>
-					<li><ahref="{{path('app_home')}}#faq">FAQ</a></li>
+					<li><a href="{{ path('app_home') }}#accueil">Accueil</a></li>
+					<li><a href="{{ path('app_home') }}#services">Nos services</a></li>
+					<li><a href="{{ path('app_home') }}#pourquoi">Pourquoi nous</a></li>
+					<li><a href="{{ path('app_home') }}#galerie">Galerie</a></li>
+					<li><a href="{{ path('app_home') }}#avis">Avis clients</a></li>
+					<li><a href="{{ path('app_home') }}#faq">FAQ</a></li>
 				</ul>
 			</div>
 
 			<div class="footer-col">
 				<h4>Services</h4>
+				{# Chaque lien ouvre la section des services filtrée sur sa catégorie
+				   (valeurs de l'enum CategorieService). Vitres : « sols » tant que le
+				   catalogue la classe ainsi (C13). Sur l'accueil, section_link_controller
+				   applique le filtre sans rechargement ; ailleurs, ?categorie= s'en charge. #}
 				<ul>
-					<li><ahref="{{path('app_home')}}#services">Nettoyage de copropriétés</a></li>
-					<li><ahref="{{path('app_home')}}#services">Entretien de bureaux</a></li>
-					<li><ahref="{{path('app_home')}}#services">Nettoyage après travaux</a></li>
-					<li><ahref="{{path('app_home')}}#services">Nettoyage de vitres</a></li>
-					<li><ahref="{{path('app_home')}}#services">Décapage & cristallisation</a></li>
+					{% for lien in [
+						{ libelle: 'Nettoyage de copropriétés', categorie: 'coproprietes' },
+						{ libelle: 'Entretien de bureaux', categorie: 'bureaux' },
+						{ libelle: 'Nettoyage après travaux', categorie: 'chantiers' },
+						{ libelle: 'Nettoyage de vitres', categorie: 'sols' },
+						{ libelle: 'Décapage & cristallisation', categorie: 'sols' },
+					] %}
+						<li>
+							<a href="{{ path('app_home', { categorie: lien.categorie }) }}#services"
+							   data-section-link-categorie="{{ lien.categorie }}">{{ lien.libelle }}</a>
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 
@@ -36,7 +47,7 @@
 				<ul>
 					<li><a href="tel:+33612062505">06 12 06 25 05</a></li>
 					<li><a href="mailto:contact@menocleanservices.fr">contact@menocleanservices.fr</a></li>
-					<li><ahref="{{path('app_home')}}#contact">6 rue Jean Anouilh, 78500 Sartrouville</a></li>
+					<li><a href="{{ path('app_home') }}#contact">6 rue Jean Anouilh, 78500 Sartrouville</a></li>
 				</ul>
 			</div>
 		</div>

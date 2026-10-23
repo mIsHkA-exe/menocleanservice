@@ -8,11 +8,13 @@
 	{{ include("partials/_schema_faq.html.twig") }}
 {% endblock %}
 
+{# Écran de chargement : bloc au premier niveau, jamais dans le bloc body,
+   sinon il est rendu une seconde fois dans <main> (C11). #}
+{% block overlay %}
+	{{ include('partials/_loading_screen.html.twig') }}
+{% endblock %}
 
 {% block body %}
-	{% block overlay %}
-		{{ include('partials/_loading_screen.html.twig') }}
-	{% endblock %}
 	{{ include('home/_sections/_hero.html.twig') }}
 	{{ include('home/_sections/_trustbar.html.twig') }}
 	{{ include('home/_sections/_about.html.twig') }}

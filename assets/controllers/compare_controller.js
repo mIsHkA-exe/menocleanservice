@@ -19,6 +19,15 @@ export default class extends Controller {
     }
 
     start(event) {
+        // Bouton principal uniquement (clic droit ou molette : rien).
+        if (event.button !== 0) {
+            return;
+        }
+
+        // Empêche le navigateur de lancer un glisser-déposer natif de l'image
+        // (aperçu fantôme qui suit le curseur).
+        event.preventDefault();
+
         this.dragging = true;
         this.element.setPointerCapture(event.pointerId);
         this.depuisX(event.clientX);

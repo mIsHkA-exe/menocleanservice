@@ -1,4 +1,11 @@
-<section class="section section--alt" id="services" data-controller="filter">
+{# Filtre initial : paramètre ?categorie= de l'adresse (liens du pied de page).
+   Une valeur inconnue est ignorée par filter_controller ; une valeur non textuelle
+   (ex. ?categorie[]=x) est écartée ici pour ne pas provoquer d'erreur. #}
+{% set categorieDemandee = app.request.query.all().categorie ?? '' %}
+<section class="section section--alt" id="services"
+         data-controller="filter"
+         data-filter-initial-value="{{ categorieDemandee is iterable ? '' : categorieDemandee }}"
+         data-action="filter:selectionner->filter#selectionner">
 	<div class="container">
 		<div class="section-head center reveal">
 			<span class="eyebrow">Nos prestations</span>
