@@ -32,18 +32,32 @@ when@test:
 when@prod:
     monolog:
         handlers:
+            # Dès qu'une erreur survient, les 50 derniers messages de la requête
+            # sont écrits dans les deux destinations du groupe "production".
             main:
                 type: fingers_crossed
                 action_level: error
-                handler: nested
+                handler: production
                 excluded_http_codes: [404, 405]
                 channels: ["!deprecation"]
                 buffer_size: 50 # How many messages should be saved? Prevent memory leaks
+            production:
+                type: group
+                members: [nested, fichier]
             nested:
                 type: stream
                 path: php://stderr
                 level: debug
                 formatter: monolog.formatter.json
+            # Hébergement mutualisé sans SSH : php://stderr n'est pas lisible.
+            # Un fichier par jour dans var/log/ (hors de /public, donc inaccessible
+            # depuis le web), lisible par SFTP. Conservation : 14 fichiers.
+            # Exemple : var/log/prod-2026-10-23.log
+            fichier:
+                type: rotating_file
+                path: "%kernel.logs_dir%/%kernel.environment%.log"
+                level: debug
+                max_files: 14
             console:
                 type: console
                 process_psr_3_messages: false
